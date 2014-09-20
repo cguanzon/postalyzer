@@ -37,3 +37,122 @@
     color: #000;
     padding: 0.2em 0;
 }
+
+.top > h1 {
+    font-size: 5em;
+}
+
+.nav > li {
+    font-size: 1.8em;
+}
+
+img {
+    margin: 0.5em 0;
+    box-shadow: 0.08em 0.08em 0.1em 0.1em #ccc;
+    transition: transform 0.2s;
+}
+
+a.logo {
+    text-decoration: none;
+}
+
+
+img:hover {
+    transform: scale(1.04, 1.04);
+}
+
+img.user-image.img-responsive {
+    max-height: 4em;
+    max-width: 4em;
+}
+
+.center-block {
+    margin: 0 auto;
+}
+
+.list-group-item {
+    margin: 0 0;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 1.25em;
+}
+
+.list-group-item > .badge {
+    font-size: 1em;
+}
+
+.feed-item {
+    border-bottom: 0.1em solid lightgray;
+    padding: 1em;
+}
+
+.user-info {
+    border: 0.25em solid #9954bb;
+    margin: 0 auto 1em auto;
+    padding: 0.5em 0;
+}
+
+.nav.nav-tabs{
+    margin-bottom: 1em;
+}
+
+.jumbotron {
+    background-color: transparent;
+}
+
+.text-info.app-title {
+    text-shadow: darkgrey -0.03em 0.05em;
+    font-weight: bolder;
+}
+
+.search-result.thumbnail.col-sm-4 {
+    min-height: 16em;
+    border: none;
+    border-bottom: 0.1em solid lightgray;
+    margin: 0 0;
+    overflow: hidden;
+}
+#custom-search-form {
+    margin:0;
+    margin-top: 5px;
+    padding: 0;
+}
+
+#custom-search-form .search-query {
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: width  0.2s ease-in-out;
+    -moz-transition:width  0.2s ease-in-out;
+    -o-transition: width  0.2s ease-in-out;
+    transition: width  0.2s ease-in-out;
+}
+
+#custom-search-form button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: relative;
+    left: -28px;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.search-query:focus + button {
+    z-index: 3;
+}
+.search-query:focus{
+    width: 260px;
+}
+
+
