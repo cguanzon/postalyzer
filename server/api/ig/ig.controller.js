@@ -144,3 +144,26 @@ exports.getUserMediaRecent = function(req, res){
     });
 };
 
+exports.getUserSelfFeed = function(req, res){
+    igApi.use({access_token: access_token});
+    igApi.user_self_feed(function(err, feed, pagination, remaining, limit){
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(fixFeed(feed));
+        }
+    });
+};
+
+exports.getUserSearch = function (req, res) {
+    igApi.use({access_token: access_token});
+    var searchString = req.query.search_string;
+    igApi.user_search(searchString, function(err, users, limit){
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(users);
+        }
+    });
+};
+
