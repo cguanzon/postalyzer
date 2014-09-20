@@ -9,7 +9,7 @@
             <ul class="list-group basic-stats">
                 <li class="list-group-item"><span class="text-info">Full Name:</span> {{selfUser.full_name}}</li>
                 <li class="list-group-item"><span class="text-info">Bio:</span> {{selfUser.bio}}</li>
-                <li class="list-group-item"><span class="text-info">Website:</span> <a ng-href="{{selfUser.website}}">{{selfUser.website}}</a></li>
+                <li class="list-group-item"><span class="text-info"><a target="_blank" ng-href="{{selfUser.website}}">Website</a></span>
                 <li class="list-group-item"><span class="text-info">Posts:</span> <span class="badge alert-info"><b>{{selfUser.counts.media | number:0}}</b></span></li>
                 <li class="list-group-item"><span class="text-info">Followers:</span> <span class="badge alert-info"><b>{{selfUser.counts.followed_by | number:0}}</b></span></li>
                 <li class="list-group-item"><span class="text-info">Following:</span> <span class="badge alert-info"><b>{{selfUser.counts.follows | number:0}}</b></span></li>

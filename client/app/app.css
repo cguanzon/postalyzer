@@ -62,8 +62,8 @@ img:hover {
 }
 
 img.user-image.img-responsive {
-    max-height: 4em;
-    max-width: 4em;
+    max-height: 8em;
+    max-width: 8em;
 }
 
 .center-block {
@@ -86,10 +86,16 @@ img.user-image.img-responsive {
     padding: 1em;
 }
 
+.feed-stats {
+    padding-top: 1em;
+}
+
 .user-info {
-    border: 0.25em solid #29abe0;
+    /*border: 0.25em solid #9954BB;*/
+    background-color: lightgreen;
     margin: 0 auto 1em auto;
     padding: 0.5em 0;
+    box-shadow: inset 0 0 1em gray;
 }
 
 .nav.nav-tabs{

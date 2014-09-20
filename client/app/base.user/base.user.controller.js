@@ -9,11 +9,8 @@ angular.module('postalyzerApp')
             });
         };
 
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
+        $scope.showFilterStats = false;
+
 
         $scope.userId = $stateParams.user_id;
 
@@ -133,17 +130,6 @@ angular.module('postalyzerApp')
                                     text: 'Likes/Comments per Filter',
                                     style: chartTextStyle
                                 }
-                            },
-                            legend: {
-                                align: 'right',
-                                x: -70,
-                                verticalAlign: 'top',
-                                y: 20,
-                                floating: true,
-                                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
-                                borderColor: '#CCC',
-                                borderWidth: 1,
-                                shadow: false
                             }
                         },
 
@@ -163,7 +149,7 @@ angular.module('postalyzerApp')
                                 type: 'pie',
                                 plotBackgroundColor: null,
                                 plotBorderWidth: 0,
-                                plotShadow: false,
+                                plotShadow: true,
                                 animation: {
                                     duration: 900
                                 }
@@ -212,7 +198,10 @@ angular.module('postalyzerApp')
                     $scope.chartConfig3 = {
                         options: {
                             chart: {
-                                type: 'bar'
+                                type: 'bar',
+                                animation: {
+                                    duration: 2000
+                                }
                             },
                             title: {
                                 text: 'Times Used for Top Tags'
