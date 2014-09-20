@@ -13,11 +13,11 @@
                 <li class="list-group-item"><span class="text-info">Posts:</span> <span class="badge alert-info"><b>{{selfUser.counts.media | number:0}}</b></span></li>
                 <li class="list-group-item"><span class="text-info">Followers:</span> <span class="badge alert-info"><b>{{selfUser.counts.followed_by | number:0}}</b></span></li>
                 <li class="list-group-item"><span class="text-info">Following:</span> <span class="badge alert-info"><b>{{selfUser.counts.follows | number:0}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.likeScorePerMedia.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.likeScorePerMedia.value | number:1}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.commentScorePerMedia.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.commentScorePerMedia.value | number:1}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.tagsPerPost.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.tagsPerPost.value | number:1}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">Favorite Filter:</span> <span class="badge alert-info"><b>{{timesUsedPerFilterChartData[0].name}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">Favorite Tag:</span> <span class="badge alert-info"><b>{{tagsUsedPerTagChartData[0].name}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.likeScorePerMedia.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.likeScorePerMedia.value || 0 | number:1}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.commentScorePerMedia.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.commentScorePerMedia.value || 0 | number:1}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.tagsPerPost.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.tagsPerPost.value || 0 | number:1}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">Favorite Filter:</span> <span class="badge alert-info"><b>{{timesUsedPerFilterChartData[0].name || 'none'}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">Favorite Tag:</span> <span class="badge alert-info"><b>{{tagsUsedPerTagChartData[0].name || 'none'}}</b></span></li>
             </ul>
         </div>
     </div>
