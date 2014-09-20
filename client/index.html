@@ -15,12 +15,15 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/angular-busy/dist/angular-busy.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/base.user/base.user.css">
+      <link rel="stylesheet" href="app/base/base.css">
       <link rel="stylesheet" href="app/login/login.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="components/modal/modal.css">
@@ -60,12 +63,21 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-busy/dist/angular-busy.js"></script>
+      <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
+      <script src="bower_components/highcharts-release/highcharts.js"></script>
+      <script src="bower_components/highcharts-release/highcharts-more.js"></script>
+      <script src="bower_components/highcharts-release/modules/exporting.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
-
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/base.user/base.user.controller.js"></script>
+          <script src="app/base.user/base.user.js"></script>
+          <script src="app/base/base.controller.js"></script>
+          <script src="app/base/base.js"></script>
           <script src="app/login/login.controller.js"></script>
           <script src="app/login/login.js"></script>
           <script src="app/main/main.controller.js"></script>

@@ -1,0 +1,69 @@
+<div class="container-fluid" cg-busy="promise">
+    <div class="col-xs-12 col-md-3 user-info">
+        <div class="col-xs-12">
+            <img class="img-responsive user-image center-block" ng-src="{{selfUser.profile_picture}}"/>
+            <p class="text-info text-center"><b>{{selfUser.username}}</b></p>
+        </div>
+
+        <div class="col-xs-12 text-left">
+            <ul class="list-group basic-stats">
+                <li class="list-group-item"><span class="text-info">Full Name:</span> {{selfUser.full_name}}</li>
+                <li class="list-group-item"><span class="text-info">Bio:</span> {{selfUser.bio}}</li>
+                <li class="list-group-item"><span class="text-info">Website:</span> <a ng-href="{{selfUser.website}}">{{selfUser.website}}</a></li>
+                <li class="list-group-item"><span class="text-info">Posts:</span> <span class="badge alert-info"><b>{{selfUser.counts.media | number:0}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">Followers:</span> <span class="badge alert-info"><b>{{selfUser.counts.followed_by | number:0}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">Following:</span> <span class="badge alert-info"><b>{{selfUser.counts.follows | number:0}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.likeScorePerMedia.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.likeScorePerMedia.value | number:1}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.commentScorePerMedia.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.commentScorePerMedia.value | number:1}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.tagsPerPost.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.tagsPerPost.value | number:1}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">Favorite Filter:</span> <span class="badge alert-info"><b>{{timesUsedPerFilterChartData[0].name}}</b></span></li>
+                <li class="list-group-item"><span class="text-info">Favorite Tag:</span> <span class="badge alert-info"><b>{{tagsUsedPerTagChartData[0].name}}</b></span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9 pull-right graphs">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h2>Filter Stats</h2></div>
+            <div class="panel-body">
+                <div class="col-xs-12 col-lg-6 panel panel-primary">
+                    <highchart id="chart1" config="chartConfig1" ></highchart>
+                </div>
+                <div class="col-xs-12 col-lg-6 panel panel-primary">
+                    <highchart id="chart2" config="chartConfig2" ></highchart>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading"><h2>Tag Stats</h2></div>
+            <div class="panel-body">
+                <div class="col-xs-12 panel panel-primary">
+                    <highchart id="chart3" config="chartConfig3" ></highchart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9 pull-right user-feed">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h2>Last 20 Posts</h2></div>
+            <div class="panel-body">
+                <div class="feed-item col-xs-12 col-sm-6" ng-repeat="medium in selfMediaRecentArray">
+                    <div class="col-xs-6">
+                        <a ng-href="{{medium.link}}"><img class="img-thumbnail" ng-src="{{medium.images.low_resolution.url}}"></a>
+                    </div>
+
+                    <div class="col-xs-6 feed-stats">
+                        <p class="text-primary">Filter: <span class="text-danger">{{medium.filter}}</span></p>
+                        <p class="text-primary">Time: <span class="text-danger">{{medium.caption.created_time | date : 'EEE d-MM-yy'}}</span>
+                        <p class="text-primary">Likes: <span class="text-danger">{{medium.likeScore}}</span></p>
+                        <p class="text-primary">Comments: <span class="text-danger">{{medium.commentScore}}</span></p>
+                        <p class="text-primary">Tags: <span class="text-danger">{{medium.tagScore}}</span></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
