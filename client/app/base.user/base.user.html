@@ -1,8 +1,8 @@
 <div class="container-fluid" cg-busy="promise">
     <div class="col-xs-12 col-md-3 user-info">
         <div class="col-xs-12">
-            <img class="img-responsive user-image center-block" ng-src="{{selfUser.profile_picture}}"/>
-            <p class="text-info text-center"><b>{{selfUser.username}}</b></p>
+            <a target="_blank" ng-href="http://instagram.com/{{selfUser.username}}"><img class="img-responsive user-image center-block" ng-src="{{selfUser.profile_picture}}"/></a>
+            <a target="_blank" ng-href="http://instagram.com/{{selfUser.username}}"><p class="text-info text-center"><b>{{selfUser.username}}</b></p></a>
         </div>
 
         <div class="col-xs-12 text-left">

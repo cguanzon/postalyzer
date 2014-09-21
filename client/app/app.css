@@ -52,7 +52,7 @@ img {
     transition: transform 0.2s;
 }
 
-a.logo {
+a:hover {
     text-decoration: none;
 }
 

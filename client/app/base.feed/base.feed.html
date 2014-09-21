@@ -1,7 +1,7 @@
 <div class="container-fluid" cg-busy="promise">
     <div class="col-xs-12">
         <h2>Your Feed with Stats</h2>
-        <div class="panel panel-info col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="feedItem in selfFeed">
+        <div class="panel panel-info col-xs-12 col-sm-6 col-md-4" ng-repeat="feedItem in selfFeed">
             <div class="panel-body">
 
                 <div class="col-xs-12 ">
@@ -27,7 +27,11 @@
             </div>
         </div>
     </div>
-    <div class="row load-more">
-        <a ng-click="getNextFeed()">Load More</a>
+    <div class="col-xs-12 load-more">
+        <a ng-click="getNextFeed()">
+            <button class="btn btn-info btn-block">
+                Load More
+            </button>
+        </a>
     </div>
 </div>
