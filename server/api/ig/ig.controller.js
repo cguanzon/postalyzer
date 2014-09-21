@@ -87,11 +87,6 @@ var addAdvancedStats = function(fixedHolder){
 
 };
 
-// Get list of igs
-exports.index = function(req, res) {
-  res.json([]);
-};
-
 exports.authorize_user = function(req, res) {
     igApi.use({
         client_id: clientId,
@@ -104,7 +99,7 @@ exports.handleauth = function(req, res) {
     igApi.authorize_user(req.query.code, redirect_uri, function(err, result) {
         if (err) {
             console.log(err.body);
-            res.send("Didn't work");
+            res.status(404).send("Didn't work");
         } else {
             access_token = result.access_token;
             igApi.use({
@@ -121,9 +116,9 @@ exports.getUser = function(req, res){
     var userId = req.query.user_id;
     igApi.user(userId, function(err, result, remaining, limit) {
         if (err) {
-            res.send(err);
+            res.status(404).send(err);
         } else {
-            res.send(result);
+            res.status(200).send(result);
         }
     });
 };
@@ -131,14 +126,24 @@ exports.getUser = function(req, res){
 exports.getUserMediaRecent = function(req, res){
     igApi.use({access_token: access_token});
     var userId = req.query.user_id;
-    igApi.user_media_recent(userId, function(err, result, pagination, remaining, limit){
+    igApi.user_media_recent(userId, {count:30}, function(err, result, pagination, remaining, limit){
         if (err) {
-            res.send(err);
+            res.status(404).send(err);
         } else {
+            var max_id = pagination.next_max_id;
             var mediaArrayHolder = {
                 mediaArray: result
             };
-            res.send(addAdvancedStats(mediaArrayHolder));
+
+            //get the the remaining 20 of the 50
+            igApi.user_media_recent(userId, {count:20, max_id: max_id}, function(err, result, pagination, remaining, limit){
+                if (err) {
+                    res.status(404).send(err);
+                } else {
+                    mediaArrayHolder.mediaArray = mediaArrayHolder.mediaArray.concat(result);
+                    res.status(200).send(addAdvancedStats(mediaArrayHolder));
+                }
+            });
         }
     });
 };
@@ -148,10 +153,10 @@ exports.getUserSelfFeed = function(req, res){
 
     var getSelfFeed = function(err, feed, pagination, remaining, limit) {
         if (err) {
-            res.send(err);
+            res.status(404).send(err);
         } else {
             console.log(pagination.next_max_id + ' remaining: ' + remaining);
-            res.send(
+            res.status(200).send(
                 {
                     feed: fixFeed(feed),
                     next_max_id: pagination.next_max_id

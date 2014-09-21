@@ -5,7 +5,6 @@ var controller = require('./ig.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
 router.get('/authorize_user', controller.authorize_user);
 router.get('/handleauth', controller.handleauth);
 router.get('/user', controller.getUser);

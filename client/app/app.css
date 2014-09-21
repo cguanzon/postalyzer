@@ -110,3 +110,8 @@ img.user-image.img-responsive {
     font-weight: bolder;
 }
 
+.feed-author > a > img{
+    height: 4em;
+    width: 4em;
+}
+
