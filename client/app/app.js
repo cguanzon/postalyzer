@@ -6,7 +6,7 @@ angular.module('postalyzerApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-//  'cgBusy',
+  'cgBusy',
   'highcharts-ng'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -14,4 +14,8 @@ angular.module('postalyzerApp', [
       .otherwise('/login');
 
     $locationProvider.html5Mode(true);
+  })
+
+  .value('cgBusyDefaults',{
+    templateUrl: '../loading.html'
   });
