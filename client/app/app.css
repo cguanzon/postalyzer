@@ -31,13 +31,6 @@
  * App-wide Styles
  */
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
 .top > h1 {
     font-size: 5em;
 }
@@ -110,8 +103,19 @@ img.user-image.img-responsive {
     font-weight: bolder;
 }
 
-.feed-author > a > img{
+.feed-author {
+    margin-bottom: 1em;
+}
+
+.feed-author a > img{
     height: 4em;
     width: 4em;
 }
 
+.stats-panel {
+    background-color: lightgray;
+}
+
+.popme {
+    box-shadow: 0 0 1em gray;
+}

@@ -97,6 +97,7 @@ angular.module('postalyzerApp')
 
                         options: {
                             chart: {
+                                backgroundColor: 'lightgray',
                                 type: 'column',
                                 animation: {
                                     duration: 2000
@@ -107,7 +108,7 @@ angular.module('postalyzerApp')
                                 '#C900A5'
                             ],
                             title: {
-                                text: 'Like/Comments Per Times Used for Recently Used Filters'
+                                text: '<b>Like/Comments per Use (Top 5)</b>'
                             },
                             tooltip: {
                                 pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
@@ -127,18 +128,18 @@ angular.module('postalyzerApp')
                             yAxis: {
                                 min: 0,
                                 title: {
-                                    text: 'Likes/Comments per Filter',
+                                    text: 'Likes/Comments per Use',
                                     style: chartTextStyle
                                 }
                             }
                         },
 
                         series: [{
-                            name: 'Likes per Times Used',
-                            data: $scope.likesPerFilterChartData
+                            name: 'Likes per Use',
+                            data: $scope.likesPerFilterChartData.slice(0,5)
                         },{
-                            name: 'Comments per Times Used',
-                            data: $scope.commentsPerFilterChartData
+                            name: 'Comments per Use',
+                            data: $scope.commentsPerFilterChartData.slice(0,5)
                         }]
                     };
 
@@ -146,6 +147,7 @@ angular.module('postalyzerApp')
 
                         options: {
                             chart: {
+                                backgroundColor: 'lightgray',
                                 type: 'pie',
                                 plotBackgroundColor: null,
                                 plotBorderWidth: 0,
@@ -163,7 +165,7 @@ angular.module('postalyzerApp')
                                 '#1167FA'
                             ],
                             title: {
-                                text: 'Amount of Times Used per Filter'
+                                text: '<b>Times Used (Top 5)</b>'
                             },
                             tooltip: {
                                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -191,20 +193,21 @@ angular.module('postalyzerApp')
                             type: 'pie',
                             name: 'Times Used',
                             innerSize: '30%',
-                            data: $scope.timesUsedPerFilterChartData
+                            data: $scope.timesUsedPerFilterChartData.slice(0,5)
                         }]
                     };
 
                     $scope.chartConfig3 = {
                         options: {
                             chart: {
+                                backgroundColor: 'lightgray',
                                 type: 'bar',
                                 animation: {
                                     duration: 2000
                                 }
                             },
                             title: {
-                                text: 'Times Used for Top Tags'
+                                text: '<b>Times Used for Top Tags</b>'
                             },
                             xAxis: {
                                 title: {
@@ -219,7 +222,7 @@ angular.module('postalyzerApp')
                             yAxis: {
                                 min: 0,
                                 title: {
-                                    text: 'Likes/Comments per Filter',
+                                    text: 'Times Used',
                                     style: chartTextStyle
                                 }
                             },

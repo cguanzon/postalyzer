@@ -21,30 +21,28 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-md-9 pull-right graphs">
-        <div class="panel panel-info">
+    <div class="col-xs-12 col-md-9 pull-right">
+        <div class="panel panel-info popme">
             <div class="panel-heading"><h2>Filter Stats</h2></div>
-            <div class="panel-body">
-                <div class="col-xs-12 col-lg-6 panel panel-primary">
+            <div class="panel-body stats-panel">
+                <div class="col-xs-12 col-lg-6">
                     <highchart id="chart1" config="chartConfig1" ></highchart>
                 </div>
-                <div class="col-xs-12 col-lg-6 panel panel-primary">
+                <div class="col-xs-12 col-lg-6">
                     <highchart id="chart2" config="chartConfig2" ></highchart>
                 </div>
             </div>
         </div>
-        <div class="panel panel-info">
+        <div class="panel panel-info popme">
             <div class="panel-heading"><h2>Tag Stats</h2></div>
-            <div class="panel-body">
-                <div class="col-xs-12 panel panel-primary">
+            <div class="panel-body stats-panel">
                     <highchart id="chart3" config="chartConfig3" ></highchart>
-                </div>
             </div>
         </div>
     </div>
 
     <div class="col-xs-12 col-md-9 pull-right user-feed">
-        <div class="panel panel-info">
+        <div class="panel panel-info popme">
             <div class="panel-heading"><h2>Last 50 Posts</h2></div>
             <div class="panel-body">
                 <div class="feed-item col-xs-12 col-sm-6" ng-repeat="medium in selfMediaRecentArray">
