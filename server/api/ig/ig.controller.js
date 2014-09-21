@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var igApi = require('instagram-node').instagram();
-var access_token;
 var clientId = '69d993ffd9684797b791d76c7c3bd717';
 var clientSecret = '4bd0f95f80314944b744b28c271c7ccf'
 
@@ -146,14 +145,29 @@ exports.getUserMediaRecent = function(req, res){
 
 exports.getUserSelfFeed = function(req, res){
     igApi.use({access_token: access_token});
-    igApi.user_self_feed(function(err, feed, pagination, remaining, limit){
+
+    var getSelfFeed = function(err, feed, pagination, remaining, limit) {
         if (err) {
             res.send(err);
         } else {
-            res.send(fixFeed(feed));
+            console.log(pagination.next_max_id + ' remaining: ' + remaining);
+            res.send(
+                {
+                    feed: fixFeed(feed),
+                    next_max_id: pagination.next_max_id
+                 }
+            );
         }
-    });
+    };
+
+    if (req.query.max_id) {
+        igApi.user_self_feed({max_id: req.query.max_id}, getSelfFeed);
+    }
+    else {
+        igApi.user_self_feed(getSelfFeed);
+    }
 };
+
 
 exports.getUserSearch = function (req, res) {
     igApi.use({access_token: access_token});
