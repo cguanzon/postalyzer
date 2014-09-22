@@ -6,7 +6,6 @@ var clientId = '69d993ffd9684797b791d76c7c3bd717';
 var clientSecret = '4bd0f95f80314944b744b28c271c7ccf'
 
 //auth variables
-var access_token;
 var redirect_uri = 'http://localhost:9000/api/igs/handleauth';
 
 //stats helper functions
@@ -101,17 +100,17 @@ exports.handleauth = function(req, res) {
             console.log(err.body);
             res.status(404).send("Didn't work");
         } else {
-            access_token = result.access_token;
             igApi.use({
                 client_id: clientId,
                 client_secret: clientSecret
             });
-            res.redirect('http://localhost:9000/success/' + access_token);
+            res.redirect('http://localhost:9000/success/' + result.access_token);
         }
     });
 };
 
 exports.getUser = function(req, res){
+    var access_token = req.headers.access_token;
     igApi.use({access_token: access_token});
     var userId = req.query.user_id;
     igApi.user(userId, function(err, result, remaining, limit) {
@@ -124,6 +123,7 @@ exports.getUser = function(req, res){
 };
 
 exports.getUserMediaRecent = function(req, res){
+    var access_token = req.headers.access_token;
     igApi.use({access_token: access_token});
     var userId = req.query.user_id;
     igApi.user_media_recent(userId, {count:30}, function(err, result, pagination, remaining, limit){
@@ -149,6 +149,7 @@ exports.getUserMediaRecent = function(req, res){
 };
 
 exports.getUserSelfFeed = function(req, res){
+    var access_token = req.headers.access_token;
     igApi.use({access_token: access_token});
 
     var getSelfFeed = function(err, feed, pagination, remaining, limit) {
@@ -175,6 +176,7 @@ exports.getUserSelfFeed = function(req, res){
 
 
 exports.getUserSearch = function (req, res) {
+    var access_token = req.headers.access_token;
     igApi.use({access_token: access_token});
     var searchString = req.query.search_string;
     igApi.user_search(searchString, function(err, users, limit){
