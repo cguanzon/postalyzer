@@ -1,7 +1,15 @@
 'use strict';
 
 angular.module('postalyzerApp')
-  .controller('BaseCtrl', function ($location, $scope, $state) {
+  .controller('BaseCtrl', function ($location, $scope, $state, $cookieStore) {
+        if( !$cookieStore.get('igToken') ) {
+            $state.go('login');
+        }
+
+        $scope.logout = function(){
+            $cookieStore.remove('igToken');
+            $state.go('login');
+        };
 
         $scope.goToDashboard = function(){
             $state.go('base.user', { user_id: 'self'});
