@@ -106,7 +106,7 @@ exports.handleauth = function(req, res) {
                 client_id: clientId,
                 client_secret: clientSecret
             });
-            res.redirect('http://localhost:9000/user/self');
+            res.redirect('http://localhost:9000/success/' + access_token);
         }
     });
 };
