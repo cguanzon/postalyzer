@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('postalyzerApp')
-  .controller('BaseSearchCtrl', function ($state, $scope, $http, $cookieStore) {
+  .controller('BaseSearchCtrl', function ($state, $scope, igService) {
         $scope.searchTerm = '';
         $scope.hasSearched = function(){
             if ($scope.searchTerm.length > 0) {
@@ -11,13 +11,7 @@ angular.module('postalyzerApp')
         };
 
         $scope.searchForUser = function(){
-            $http({
-                method: 'GET',
-                url: '/api/igs/user_search?search_string=' + $scope.searchTerm,
-                headers: {
-                    access_token: $cookieStore.get('igToken')
-                }
-            })
+            igService.searchForUser($scope.searchTerm)
                 .then( function (res) {
                     $scope.searchResults = res.data;
                     console.log($scope.searchResults);

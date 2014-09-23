@@ -28,6 +28,36 @@ angular.module('postalyzerApp')
             });
         };
 
+        this.getSelfFeed = function(){
+            return $http({
+                method: 'GET',
+                url: '/api/igs/user_self_feed',
+                headers: {
+                    access_token: $cookieStore.get('igToken')
+                }
+            });
+        };
+
+        this.getNextFeed = function(nextMaxId){
+            return $http({
+                method: 'GET',
+                url: '/api/igs/user_self_feed?max_id=' + nextMaxId,
+                headers: {
+                    access_token: $cookieStore.get('igToken')
+                }
+            });
+        };
+
+        this.searchForUser = function(searchTerm){
+            return $http({
+                method: 'GET',
+                url: '/api/igs/user_search?search_string=' + searchTerm,
+                headers: {
+                    access_token: $cookieStore.get('igToken')
+                }
+            })
+        };
+
         this.getUserRecent = function(userId){
             var deferred = $q.defer();
 

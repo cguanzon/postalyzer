@@ -1,11 +1,8 @@
 'use strict';
 
 angular.module('postalyzerApp')
-  .controller('BaseUserCtrl', function ($http, $scope, $stateParams, $cookieStore, igService) {
-
-
+  .controller('BaseUserCtrl', function ($scope, $stateParams, igService) {
         $scope.showFilterStats = false;
-
 
         $scope.userId = $stateParams.user_id;
 

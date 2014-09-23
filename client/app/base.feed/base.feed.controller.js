@@ -1,15 +1,9 @@
 'use strict';
 
 angular.module('postalyzerApp')
-  .controller('BaseFeedCtrl', function ($state, $scope, $http, $cookieStore) {
+  .controller('BaseFeedCtrl', function ($state, $scope, igService) {
         $scope.getSelfFeed = function(){
-            $scope.promise = $http({
-                method: 'GET',
-                url: '/api/igs/user_self_feed',
-                headers: {
-                    access_token: $cookieStore.get('igToken')
-                }
-            })
+            $scope.promise = igService.getSelfFeed()
                 .then(function(res){
                     $scope.selfFeed = res.data.feed;
                     $scope.nextMaxId = res.data.next_max_id;
@@ -23,16 +17,10 @@ angular.module('postalyzerApp')
         $scope.getSelfFeed();
 
         $scope.getNextFeed = function(){
-            $scope.promise = $http({
-                method: 'GET',
-                url: '/api/igs/user_self_feed?max_id=' + $scope.nextMaxId,
-                headers: {
-                    access_token: $cookieStore.get('igToken')
-                }
-            })
+            $scope.promise = igService.getNextFeed($scope.nextMaxId)
                 .then(function(res){
                     $scope.selfFeed = $scope.selfFeed.concat(res.data.feed);
                     $scope.nextMaxId = res.data.next_max_id;
                 });
-        }
+        };
   });
