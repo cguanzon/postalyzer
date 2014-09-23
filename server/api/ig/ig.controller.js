@@ -6,7 +6,7 @@ var clientId = '69d993ffd9684797b791d76c7c3bd717';
 var clientSecret = '4bd0f95f80314944b744b28c271c7ccf'
 
 //auth variables
-var redirect_uri = 'http://localhost:9000/api/igs/handleauth';
+var redirect_uri = '/api/igs/handleauth';
 
 //stats helper functions
 //helper functions
@@ -104,7 +104,7 @@ exports.handleauth = function(req, res) {
                 client_id: clientId,
                 client_secret: clientSecret
             });
-            res.redirect('http://localhost:9000/success/' + result.access_token);
+            res.redirect('/success/' + result.access_token);
         }
     });
 };
