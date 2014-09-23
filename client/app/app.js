@@ -16,6 +16,7 @@ angular.module('postalyzerApp', [
     $locationProvider.html5Mode(true);
   })
 
-  .value('cgBusyDefaults',{
-    templateUrl: '../loading.html'
-  });
+//  need to find a way to make this work with grunt serve:dist
+//  .value('cgBusyDefaults',{
+//    templateUrl: '/app/loading.html'
+//  });
