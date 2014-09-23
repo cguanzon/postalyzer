@@ -2,11 +2,15 @@
 
 var _ = require('lodash');
 var igApi = require('instagram-node').instagram();
-var clientId = '69d993ffd9684797b791d76c7c3bd717';
-var clientSecret = '4bd0f95f80314944b744b28c271c7ccf'
+var config = require('../../config/environment');
+console.log(config);
+var clientId = config.heroku.CLIENT_ID;
+var clientSecret = config.heroku.CLIENT_SECRET;
+var domain = config.domain;
 
 //auth variables
-var redirect_uri = '/api/igs/handleauth';
+var redirect_uri = domain + '/api/igs/handleauth';
+console.log(redirect_uri);
 
 //stats helper functions
 //helper functions
