@@ -149,6 +149,12 @@ exports.getUserMediaRecent = function(req, res){
     });
 };
 
+exports.compareUsers = function(req, res){
+    var access_token = req.headers.access_token;
+    igApi.use({access_token: access_token});
+
+};
+
 exports.getUserSelfFeed = function(req, res){
     var access_token = req.headers.access_token;
     igApi.use({access_token: access_token});
