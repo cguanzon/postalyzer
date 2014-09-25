@@ -35,5 +35,12 @@ angular.module('postalyzerApp')
             $scope.searchResults = [{},{}];
         };
 
+        $scope.compare = function(){
+            var one;
+            var two;
+
+
+        };
+
 
   });
