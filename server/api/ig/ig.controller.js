@@ -3,14 +3,12 @@
 var _ = require('lodash');
 var igApi = require('instagram-node').instagram();
 var config = require('../../config/environment');
-console.log(config);
 var clientId = config.heroku.CLIENT_ID;
 var clientSecret = config.heroku.CLIENT_SECRET;
 var domain = config.domain;
 
 //auth variables
 var redirect_uri = domain + '/api/igs/handleauth';
-console.log(redirect_uri);
 
 //stats helper functions
 //helper functions
@@ -101,7 +99,6 @@ exports.authorize_user = function(req, res) {
 exports.handleauth = function(req, res) {
     igApi.authorize_user(req.query.code, redirect_uri, function(err, result) {
         if (err) {
-            console.log(err.body);
             res.status(404).send("Didn't work");
         } else {
             igApi.use({
@@ -160,7 +157,6 @@ exports.getUserSelfFeed = function(req, res){
         if (err) {
             res.status(404).send(err);
         } else {
-            console.log(pagination.next_max_id + ' remaining: ' + remaining);
             res.status(200).send(
                 {
                     feed: fixFeed(feed),

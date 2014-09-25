@@ -2,27 +2,36 @@
 
 angular.module('postalyzerApp')
   .controller('BaseCompareCtrl', function ($scope, igService) {
-        $scope.searchTerm1 = '';
-        $scope.hasSearched1 = function(){
-            if ($scope.searchTerm1.length > 0) {
+        $scope.searchTerms = ['',''];
+        $scope.users = [{},{}];
+        $scope.searchResults = [{},{}];
+
+        $scope.hasSearched = function(){
+            if ($scope.searchTerms[0].length > 0 || $scope.searchTerms[1].length > 0) {
                 return true;
             }
             return false;
         };
-
-        $scope.user1 = {
-
+        $scope.hasSelected = function(userNumber){
+            if($scope.users[userNumber-1].username) {
+                return true;
+            }
+            return false;
+        };
+        $scope.selectUser = function(userNumber,user){
+            $scope.users[userNumber-1] = user;
+            $scope.searchTerms[userNumber-1] = '';
         };
 
-        $scope.searchForUser = function(searchTerm){
+
+
+        $scope.searchForUser = function(userNumber, searchTerm){
+            console.log(searchTerm);
             igService.searchForUser(searchTerm)
                 .then( function (res) {
-                    $scope.searchResults = res.data;
+                    $scope.searchResults[userNumber-1] = res.data;
                 });
         };
 
-        $scope.selectUser1 = function(user1){
-            $scope.user1 = user1;
-            $scope.searchTerm1 = '';
-        };
+
   });
