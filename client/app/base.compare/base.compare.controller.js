@@ -22,15 +22,17 @@ angular.module('postalyzerApp')
             $scope.users[userNumber-1] = user;
             $scope.searchTerms[userNumber-1] = '';
         };
-
-
-
         $scope.searchForUser = function(userNumber, searchTerm){
             console.log(searchTerm);
             igService.searchForUser(searchTerm)
                 .then( function (res) {
                     $scope.searchResults[userNumber-1] = res.data;
                 });
+        };
+        $scope.reset = function(){
+            $scope.searchTerms = ['',''];
+            $scope.users = [{},{}];
+            $scope.searchResults = [{},{}];
         };
 
 
