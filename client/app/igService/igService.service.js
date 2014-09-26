@@ -58,6 +58,11 @@ angular.module('postalyzerApp')
             })
         };
 
+
+        this.compareUsers = function(userId1, userId2){
+            //fill this
+        };
+
         this.getUserRecent = function(userId){
             var deferred = $q.defer();
 
