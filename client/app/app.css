@@ -120,3 +120,7 @@ img.user-image.img-responsive {
     height: 4em;
     width: 4em;
 }
+
+a:hover {
+    cursor:pointer;
+}
