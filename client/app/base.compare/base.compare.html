@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="col-xs-12" ng-show="hasSelected(1) && hasSelected(2)">
+    <div class="col-xs-12" ng-show="hasSelected(1) && hasSelected(2) && !hasCompared">
         <button class="btn btn-danger center-block" ng-click="compare()">Compare</button>
     </div>
 </div>
@@ -70,7 +70,7 @@
 
 <div class="col-xs-12" ng-show="hasCompared">
     <div class="panel panel-info">
-        <div class="panel-heading">hi</div>
+        <div class="panel-heading"><h2>User Comparison</h2></div>
         <div class="panel-body stats-panel">
             <highchart id="chart4" config="compareChart" ></highchart>
         </div>

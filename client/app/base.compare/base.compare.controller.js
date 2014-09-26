@@ -37,15 +37,10 @@ angular.module('postalyzerApp')
 
         $scope.compare = function(){
             $scope.hasCompared = true;
-            igService.getUserRecent($scope.users[0].id)
+            igService.compareUsers($scope.users[0].id, $scope.users[1].id)
                 .then(function(res){
                     console.log(res);
-                    $scope.compareChart = res.resultWithStats.chartConfig4;
-
-
-
-
-
+                    $scope.compareChart = res.chartConfig4;
                 });
 
 
