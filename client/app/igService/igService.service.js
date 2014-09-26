@@ -105,7 +105,6 @@ angular.module('postalyzerApp')
                                         dataLabels: {
                                             enabled: true
                                         }
-
                                     }
                                 );
                                 resultWithStats.commentsPerFilterChartData.push(
@@ -314,7 +313,6 @@ angular.module('postalyzerApp')
                             user2Stats = res.resultWithStats;
                             console.log(user2Stats);
 
-
                             //compute chart4 values
                             var statsContext1 = user1Stats.selfMediaRecent.stats;
                             var statsContext2 = user2Stats.selfMediaRecent.stats;
@@ -331,16 +329,28 @@ angular.module('postalyzerApp')
                             var chartConfig4 = {
                                 options: {
                                     chart: {
-                                        type: 'bar'
+                                        type: 'bar',
+                                        backgroundColor: 'lightgray',
+                                        animation: {
+                                            duration: 2000
+                                        }
                                     },
+                                    colors: [
+                                        '#00C924',
+                                        '#ED114F'
+
+                                    ],
                                     title: {
-                                        text: 'Share Percentages'
+                                        text: 'Share Percentages',
+                                        style: chartTextStyle
+
                                     },
                                     xAxis: [{
                                         categories: categories,
                                         reversed: false,
                                         labels: {
-                                            step: 1
+                                            step: 1,
+                                            style: chartTextStyle
                                         }
                                     }, { // mirror axis on right side
                                         opposite: true,
@@ -348,7 +358,8 @@ angular.module('postalyzerApp')
                                         categories: categories,
                                         linkedTo: 0,
                                         labels: {
-                                            step: 1
+                                            step: 1,
+                                            style: chartTextStyle
                                         }
                                     }],
                                     yAxis: {
@@ -357,7 +368,7 @@ angular.module('postalyzerApp')
                                         },
                                         labels: {
                                             formatter: function () {
-                                                return (Math.abs(this.value)) + '%';
+                                                return '<b>' + (Math.abs(this.value)) + '%</b>';
                                             }
                                         },
                                         min: -100,
@@ -372,8 +383,8 @@ angular.module('postalyzerApp')
 
                                     tooltip: {
                                         formatter: function () {
-                                            return '<b>' + this.series.name + ', </b><br/>' + this.point.category +
-                                                ': ' + Highcharts.numberFormat(Math.abs(this.point.y), 0) + '%';
+                                            return '<b>' + this.series.name + ', <br/>' + this.point.category +
+                                                ': ' + Highcharts.numberFormat(Math.abs(this.point.y), 0) + '%</b>';
                                         }
                                     }
                                 },

@@ -115,3 +115,8 @@ img.user-image.img-responsive {
 .popme {
     box-shadow: 0 0 1em gray;
 }
+
+.user1-and-2 .img-circle {
+    height: 4em;
+    width: 4em;
+}
