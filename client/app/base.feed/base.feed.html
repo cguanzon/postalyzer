@@ -20,7 +20,7 @@
 
                 <div class="col-xs-12 feed-stats">
                     <p class="text-primary"><b>Filter: <span class="text-danger">{{feedItem.filter}}</span></b></p>
-                    <p class="text-primary"><b>Time: <span class="text-danger">{{feedItem.caption.created_time | date : 'medium'}}</span></b></p>
+                    <p class="text-primary"><b>Time: <span class="text-danger">{{feedItem.caption.created_time*1000 | date : 'medium'}}</span></b></p>
                     <p class="text-primary"><b>Likes: <span class="text-danger">{{feedItem.likeScore}}</span></b></p>
                     <p class="text-primary"><b>Comments: <span class="text-danger">{{feedItem.commentScore}}</span></b></p>
                 </div>
