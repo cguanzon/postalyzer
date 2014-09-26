@@ -287,6 +287,5 @@ angular.module('postalyzerApp')
                 });
 
             return deferred.promise;
-
         };
   });

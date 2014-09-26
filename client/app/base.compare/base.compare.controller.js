@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('postalyzerApp')
-  .controller('BaseCompareCtrl', function ($scope, igService) {
+  .controller('BaseCompareCtrl', function ($scope, igService, $http, $cookieStore) {
         $scope.searchTerms = ['',''];
         $scope.users = [{},{}];
         $scope.searchResults = [{},{}];
@@ -36,8 +36,15 @@ angular.module('postalyzerApp')
         };
 
         $scope.compare = function(){
-            var one;
-            var two;
+            $http({
+                method: 'GET',
+                url: '/api/igs/compare_users?user1=' + $scope.users[0].id + '&&user2=' + $scope.users[1].id,
+                headers: {
+                    access_token: $cookieStore.get('igToken')
+                }
+            }).then(function(res){
+               console.log(res.data.compareStats);
+            });
 
 
         };

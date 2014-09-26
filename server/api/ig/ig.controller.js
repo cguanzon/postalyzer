@@ -131,20 +131,24 @@ exports.getUserMediaRecent = function(req, res){
         if (err) {
             res.status(404).send(err);
         } else {
-            var max_id = pagination.next_max_id;
             var mediaArrayHolder = {
                 mediaArray: result
             };
 
-            //get the the remaining 20 of the 50
-            igApi.user_media_recent(userId, {count:20, max_id: max_id}, function(err, result, pagination, remaining, limit){
-                if (err) {
-                    res.status(404).send(err);
-                } else {
-                    mediaArrayHolder.mediaArray = mediaArrayHolder.mediaArray.concat(result);
-                    res.status(200).send(addAdvancedStats(mediaArrayHolder));
-                }
-            });
+            //check if we haven't reached end of list
+            if (pagination.next_max_id) {
+                //get the the remaining 20 of the 50
+                igApi.user_media_recent(userId, {count: 20, max_id: pagination.next_max_id}, function (err, result, pagination, remaining, limit) {
+                    if (err) {
+                        res.status(404).send(err);
+                    } else {
+                        mediaArrayHolder.mediaArray = mediaArrayHolder.mediaArray.concat(result);
+                    }
+                });
+            }
+
+            res.status(200).send(addAdvancedStats(mediaArrayHolder));
+
         }
     });
 };
@@ -152,6 +156,62 @@ exports.getUserMediaRecent = function(req, res){
 exports.compareUsers = function(req, res){
     var access_token = req.headers.access_token;
     igApi.use({access_token: access_token});
+
+    var user_id1 = req.query.user1;
+    var user_id2 = req.query.user2;
+    var userStats1, userStats2;
+
+    igApi.user_media_recent(user_id1, {count:30}, function(err, result, pagination, remaining, limit){
+        if (err) {
+            res.status(404).send(err);
+        } else {
+            var mediaArrayHolder = {
+                mediaArray: result
+            };
+
+            //check if we haven't reached end of list
+            if (pagination.next_max_id) {
+                //get the the remaining 20 of the 50
+                igApi.user_media_recent(user_id1, {count: 20, max_id: pagination.next_max_id}, function (err, result, pagination, remaining, limit) {
+                    if (err) {
+                        res.status(404).send(err);
+                    } else {
+                        mediaArrayHolder.mediaArray = mediaArrayHolder.mediaArray.concat(result);
+                    }
+                });
+            }
+
+            userStats1 = addAdvancedStats(mediaArrayHolder);
+
+        }
+    });
+
+    igApi.user_media_recent(user_id2, {count:30}, function(err, result, pagination, remaining, limit){
+        if (err) {
+            res.status(404).send(err);
+        } else {
+            var mediaArrayHolder = {
+                mediaArray: result
+            };
+
+            //check if we haven't reached end of list
+            if (pagination.next_max_id) {
+                //get the the remaining 20 of the 50
+                igApi.user_media_recent(user_id2, {count: 20, max_id: pagination.next_max_id}, function (err, result, pagination, remaining, limit) {
+                    if (err) {
+                        res.status(404).send(err);
+                    } else {
+                        mediaArrayHolder.mediaArray = mediaArrayHolder.mediaArray.concat(result);
+                    }
+                });
+            }
+            userStats2 = addAdvancedStats(mediaArrayHolder);
+
+            res.status(200).send({compareStats: [userStats1, userStats2]});
+
+        }
+    });
+
 
 };
 
