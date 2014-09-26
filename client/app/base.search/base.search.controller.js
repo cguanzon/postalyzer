@@ -14,7 +14,6 @@ angular.module('postalyzerApp')
             igService.searchForUser($scope.searchTerm)
                 .then( function (res) {
                     $scope.searchResults = res.data;
-                    console.log($scope.searchResults);
                 });
         };
 
