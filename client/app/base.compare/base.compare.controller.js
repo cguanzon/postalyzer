@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('postalyzerApp')
-  .controller('BaseCompareCtrl', function ($scope, igService, $http, $cookieStore) {
+  .controller('BaseCompareCtrl', function ($scope, igService) {
         $scope.searchTerms = ['',''];
         $scope.users = [{},{}];
         $scope.searchResults = [{},{}];
@@ -23,7 +23,6 @@ angular.module('postalyzerApp')
             $scope.searchTerms[userNumber-1] = '';
         };
         $scope.searchForUser = function(userNumber, searchTerm){
-            console.log(searchTerm);
             igService.searchForUser(searchTerm)
                 .then( function (res) {
                     $scope.searchResults[userNumber-1] = res.data;
@@ -33,18 +32,21 @@ angular.module('postalyzerApp')
             $scope.searchTerms = ['',''];
             $scope.users = [{},{}];
             $scope.searchResults = [{},{}];
+            $scope.hasCompared = false;
         };
 
         $scope.compare = function(){
-            $http({
-                method: 'GET',
-                url: '/api/igs/compare_users?user1=' + $scope.users[0].id + '&&user2=' + $scope.users[1].id,
-                headers: {
-                    access_token: $cookieStore.get('igToken')
-                }
-            }).then(function(res){
-               console.log(res.data.compareStats);
-            });
+            $scope.hasCompared = true;
+            igService.getUserRecent($scope.users[0].id)
+                .then(function(res){
+                    console.log(res);
+                    $scope.compareChart = res.resultWithStats.chartConfig4;
+
+
+
+
+
+                });
 
 
         };
