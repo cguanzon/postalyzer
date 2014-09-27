@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('postalyzerApp')
-  .service('igService', function ($http, $cookieStore, $q) {
+  .service('igService', function ($http, $cookieStore, $q, $state) {
 
         var chartTextStyle = {
             fontSize: '13px',
@@ -19,13 +19,23 @@ angular.module('postalyzerApp')
 
 
         var getUser = function(userId){
-            return $http({
+            var deferred = $q.defer();
+            $http({
                 method: 'GET',
                 url: '/api/igs/user?user_id=' + userId,
                 headers: {
                     access_token: $cookieStore.get('igToken')
                 }
-            });
+            })
+                .success(function(data, status){
+                    console.log(data);
+                    deferred.resolve(data);
+                })
+                .error(function(){
+                    $state.go('base.404');
+                });
+
+            return deferred.promise;
         };
 
         this.getUser = getUser;
@@ -70,6 +80,9 @@ angular.module('postalyzerApp')
                     access_token: $cookieStore.get('igToken')
                 }
             })
+                .error(function(data, status){
+                    deferred.reject({message: 'something is wrong'})
+                })
                 .then(function(res) {
                     var resultWithStats = {};
                     if (res.data.error_message) {
@@ -302,9 +315,9 @@ angular.module('postalyzerApp')
             ];
 
             getUser(userId1).then(function(res){
-                user1Info = res.data;
+                user1Info = res;
                 getUser(userId2).then(function(res){
-                    user2Info = res.data;
+                    user2Info = res;
                     getUserRecent(userId1).then(function(res){
                         user1Stats = res.resultWithStats;
                         console.log(user1Stats);

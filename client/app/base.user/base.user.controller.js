@@ -9,8 +9,11 @@ angular.module('postalyzerApp')
         $scope.getUser = function(){
             igService.getUser($scope.userId)
                 .then(function(res){
-                    $scope.selfUser = res.data;
+                    console.log(res);
+                    $scope.selfUser = res;
+
                 });
+
         };
 
         $scope.getUserRecent = function(){
