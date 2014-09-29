@@ -98,13 +98,13 @@ img.user-image.img-responsive {
     text-shadow: darkgrey -0.03em 0.05em;
     font-weight: bolder;
 }
-.feed-author-info {
-    background-color: #90ee90;
-    margin: 1em 0;
+.feed-author-info, .user-info, .self-info {
+    background-color: #d3d3d3;
+    margin-bottom: 1em;
     transition: transform 0.2s;
 }
 
-.feed-author-info:hover {
+.feed-author-info:hover, .user-info:hover {
     transform: scale(1.04, 1.04);
 }
 
@@ -112,7 +112,7 @@ img.user-image.img-responsive {
     margin-bottom: 1em;
 }
 
-.feed-author a > img{
+.feed-author > img{
     height: 4em;
     width: 4em;
 }
@@ -133,4 +133,5 @@ img.user-image.img-responsive {
 a:hover {
     cursor:pointer;
 }
+
 

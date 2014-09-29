@@ -20,4 +20,6 @@ angular.module('postalyzerApp')
         $scope.goToUser = function(userId) {
             $state.go('base.user', { user_id: userId });
         };
+
+        $scope.tooltips = igService.getTooltips();
   });

@@ -4,18 +4,18 @@
         <div class="panel panel-default col-xs-12 col-sm-6 col-lg-4" ng-repeat="feedItem in selfFeed">
             <div class="panel-body">
 
-                <div class="panel-body popme feed-author-info">
+                <a ng-href="/#/user/{{feedItem.user.id}}"><div class="panel-body popme feed-author-info" tooltip="{{tooltips.user}}">
                     <div class="col-xs-4 feed-author">
-                        <a ng-href="/#/user/{{feedItem.user.id}}"><img class="user-image img-circle center-block" ng-src="{{feedItem.user.profile_picture}}"/></a>
+                        <img class="user-image img-circle center-block" ng-src="{{feedItem.user.profile_picture}}"/>
                     </div>
                     <div class="col-xs-8 pull-left">
-                        <a ng-href="/#/user/{{feedItem.user.id}}"><p>{{feedItem.user.username}}</p></a>
-                        <p>{{feedItem.user.full_name}}</p>
+                        <p class="text-info"><b>{{feedItem.user.username}}</b></p>
+                        <p class="text-info"><b>{{feedItem.user.full_name}}</b></p>
                     </div>
-                </div>
+                </div></a>
 
                 <div class="col-xs-12">
-                    <a target="_blank" ng-href="{{feedItem.link}}"><img class="img-responsive center-block" ng-src="{{feedItem.images.low_resolution.url}}"></a>
+                    <a tooltip="{{tooltips.instagram}}" target="_blank" ng-href="{{feedItem.link}}"><img class="img-responsive center-block" ng-src="{{feedItem.images.low_resolution.url}}"></a>
                 </div>
 
                 <div class="col-xs-12 feed-stats">

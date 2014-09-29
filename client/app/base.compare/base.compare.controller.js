@@ -46,5 +46,7 @@ angular.module('postalyzerApp')
 
         };
 
+        $scope.tooltips = igService.getTooltips();
+
 
   });

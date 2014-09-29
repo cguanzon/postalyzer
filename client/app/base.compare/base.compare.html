@@ -42,35 +42,35 @@
 <div ng-show="hasSearched()" class="col-xs-12 search-results">
     <h2>Select a user below.</h2>
     <div class="col-xs-12 col-sm-4 col-md-3 " ng-show="!hasSelected(1)" ng-repeat="searchResult in searchResults[0]">
-        <div class="panel col-xs-12 user-info">
+        <a ng-click="selectUser(1, searchResults[0][$index])"><div class="panel col-xs-12 user-info" tooltip="Select this user">
             <div class="col-xs-12">
-                <a ng-click="selectUser(1, searchResults[0][$index])"><img class="img-circle user-image center-block" ng-src="{{searchResult.profile_picture}}"/></a>
+                <img class="img-circle user-image center-block" ng-src="{{searchResult.profile_picture}}"/>
             </div>
 
             <div class="col-xs-12">
-                <h2 class="text-center"><a ng-click="selectUser(1, searchResults[0][$index])">{{searchResult.username}}</a></h2>
-                <p class="text-center">Full Name: {{searchResult.full_name}}</p>
+                <h2 class="text-center text-info">{{searchResult.username}}</h2>
+                <p class="text-center text-info">Full Name: {{searchResult.full_name}}</p>
             </div>
-        </div>
+        </div></a>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-3 " ng-show="!hasSelected(2)" ng-repeat="searchResult in searchResults[1]">
-        <div class="panel col-xs-12 user-info">
+        <a ng-click="selectUser(2, searchResults[1][$index])"><div class="panel col-xs-12 user-info" tooltip="Select this user">
             <div class="col-xs-12">
-                <a ng-click="selectUser(2, searchResults[1][$index])"><img class="img-circle user-image center-block" ng-src="{{searchResult.profile_picture}}"/></a>
+                <img class="img-circle user-image center-block" ng-src="{{searchResult.profile_picture}}"/>
             </div>
 
             <div class="col-xs-12">
-                <h2 class="text-center"><a ng-click="selectUser(2, searchResults[1][$index])">{{searchResult.username}}</a></h2>
+                <h2 class="text-center">{{searchResult.username}}</h2>
                 <p class="text-center">Full Name: {{searchResult.full_name}}</p>
             </div>
-        </div>
+        </div></a>
     </div>
 </div>
 
 <div class="col-xs-12" ng-show="hasCompared">
     <div class="panel panel-info popme">
-        <div class="panel-heading"><h2><b>User Comparison</b></h2></div>
+        <div class="panel-heading"><h2 class="text-center"><b>User Comparison</b></h2></div>
         <div class="panel-body stats-panel">
             <highchart id="chart4" config="compareChart" cg-busy="promise"></highchart>
         </div>
