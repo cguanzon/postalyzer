@@ -46,7 +46,7 @@ a:hover {
 }
 
 
-img:hover {
+a > img:hover {
     transform: scale(1.04, 1.04);
 }
 
@@ -98,6 +98,15 @@ img.user-image.img-responsive {
     text-shadow: darkgrey -0.03em 0.05em;
     font-weight: bolder;
 }
+.feed-author-info {
+    background-color: #90ee90;
+    margin: 1em 0;
+    transition: transform 0.2s;
+}
+
+.feed-author-info:hover {
+    transform: scale(1.04, 1.04);
+}
 
 .feed-author {
     margin-bottom: 1em;
@@ -124,3 +133,4 @@ img.user-image.img-responsive {
 a:hover {
     cursor:pointer;
 }
+

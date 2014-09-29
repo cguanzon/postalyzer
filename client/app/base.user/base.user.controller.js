@@ -2,6 +2,9 @@
 
 angular.module('postalyzerApp')
   .controller('BaseUserCtrl', function ($scope, $stateParams, igService) {
+        $scope.tooltips = igService.getTooltips();
+        console.log($scope.tooltips);
+
         $scope.showFilterStats = false;
 
         $scope.userId = $stateParams.user_id;

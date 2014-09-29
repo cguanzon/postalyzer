@@ -419,4 +419,11 @@ angular.module('postalyzerApp')
             });
             return deferred.promise;
         };
+
+        this.getTooltips = function(){
+          return {
+              instagram: 'View in Instagram',
+              user: "View User's Stats Page"
+          }
+        };
   });

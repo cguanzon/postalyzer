@@ -23,4 +23,6 @@ angular.module('postalyzerApp')
                     $scope.nextMaxId = res.data.next_max_id;
                 });
         };
+
+        $scope.tooltips = igService.getTooltips();
   });

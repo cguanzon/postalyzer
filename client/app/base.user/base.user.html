@@ -3,8 +3,8 @@
     <h4 class="text-default text-center"><em>Stats are based on last 50 posts.</em></h4>
     <div class="col-xs-12 col-md-3 user-info">
         <div class="col-xs-12">
-            <a target="_blank" ng-href="http://instagram.com/{{selfUser.username}}"><img class="img-circle user-image center-block" ng-src="{{selfUser.profile_picture}}"/></a>
-            <a target="_blank" ng-href="http://instagram.com/{{selfUser.username}}"><p class="text-info text-center"><b>{{selfUser.username}}</b></p></a>
+            <a target="_blank" tooltip="{{tooltips.instagram}}" tooltip-placement="right" ng-href="http://instagram.com/{{selfUser.username}}"><img class="img-circle user-image center-block" ng-src="{{selfUser.profile_picture}}"/></a>
+            <a target="_blank" tooltip="{{tooltips.instagram}}" tooltip-placement="right" ng-href="http://instagram.com/{{selfUser.username}}"><p class="text-info text-center"><b>{{selfUser.username}}</b></p></a>
         </div>
 
         <div class="col-xs-12 text-left">
@@ -49,7 +49,7 @@
             <div class="panel-body">
                 <div class="feed-item col-xs-12 col-sm-6" ng-repeat="medium in selfMediaRecentArray">
                     <div class="col-xs-6">
-                        <a ng-href="{{medium.link}}"><img class="img-thumbnail" ng-src="{{medium.images.low_resolution.url}}"></a>
+                        <a tooltip="{{tooltips.instagram}}" tooltip-placement="right" ng-href="{{medium.link}}"><img class="img-thumbnail" ng-src="{{medium.images.low_resolution.url}}"></a>
                     </div>
 
                     <div class="col-xs-6 feed-stats">
