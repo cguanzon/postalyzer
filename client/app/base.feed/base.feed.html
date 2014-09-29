@@ -4,7 +4,7 @@
         <div class="panel panel-default col-xs-12 col-sm-6 col-lg-4" ng-repeat="feedItem in selfFeed">
             <div class="panel-body">
 
-                <a ng-href="/#/user/{{feedItem.user.id}}"><div class="panel-body popme feed-author-info" tooltip="{{tooltips.user}}">
+                <a ng-href="/#/user/{{feedItem.user.id}}"><div class="panel-body feed-author-info" tooltip="{{tooltips.user}}">
                     <div class="col-xs-4 feed-author">
                         <img class="user-image img-circle center-block" ng-src="{{feedItem.user.profile_picture}}"/>
                     </div>
