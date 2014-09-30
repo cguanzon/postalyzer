@@ -131,10 +131,9 @@ exports.getUserMediaRecent = function(req, res){
         if (err) {
             res.status(404).send(err);
         } else {
-            var mediaArrayHolder = {
-                mediaArray: result
-            };
 
+            var mediaArray1 = result;
+            var mediaArrayHolder = {};
             //check if we haven't reached end of list
             if (pagination.next_max_id) {
                 //get the the remaining 20 of the 50
@@ -142,12 +141,16 @@ exports.getUserMediaRecent = function(req, res){
                     if (err) {
                         res.status(404).send(err);
                     } else {
-                        mediaArrayHolder.mediaArray = mediaArrayHolder.mediaArray.concat(result);
+                        mediaArrayHolder.mediaArray  = mediaArray1.concat(result);
+                        res.status(200).send(addAdvancedStats(mediaArrayHolder));
                     }
                 });
+            } else {
+                mediaArrayHolder.mediaArray  = mediaArray1;
+                res.status(200).send(addAdvancedStats(mediaArrayHolder));
             }
 
-            res.status(200).send(addAdvancedStats(mediaArrayHolder));
+
 
         }
     });
