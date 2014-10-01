@@ -8,7 +8,7 @@ angular.module('postalyzerApp')
 
         $scope.logout = function(){
             $cookieStore.remove('igToken');
-            $state.go('login');
+            $state.go('logout');
         };
 
         $scope.goToDashboard = function(){
