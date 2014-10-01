@@ -311,11 +311,14 @@ angular.module('postalyzerApp')
             var categories = [
                 'Tags per Post',
                 'Comments per Post',
-                'Likes per Post'
+                'Likes per Post',
+                'Followers',
+                'Posts'
             ];
 
             getUser(userId1).then(function(res){
                 user1Info = res;
+                console.log(user1Info);
                 getUser(userId2).then(function(res){
                     user2Info = res;
                     getUserRecent(userId1).then(function(res){
@@ -329,6 +332,8 @@ angular.module('postalyzerApp')
                             //compute chart4 values
                             var statsContext1 = user1Stats.selfMediaRecent.stats;
                             var statsContext2 = user2Stats.selfMediaRecent.stats;
+                            var combinedPosts = user1Info.counts.media + user2Info.counts.media;
+                            var combinedFollowers = user1Info.counts.followed_by + user2Info.counts.followed_by;
                             var combinedLPP = statsContext1.likeScorePerMedia.value + statsContext2.likeScorePerMedia.value;
                             var combinedCPP = statsContext1.commentScorePerMedia.value + statsContext2.commentScorePerMedia.value;
                             var combinedTPP = statsContext1.tagsPerPost.value + statsContext2.tagsPerPost.value;
@@ -338,6 +343,11 @@ angular.module('postalyzerApp')
                             var user2TPP = statsContext2.tagsPerPost.value / combinedTPP * 100;
                             var user2CPP = statsContext2.commentScorePerMedia.value / combinedCPP * 100;
                             var user2LPP = statsContext2.likeScorePerMedia.value / combinedLPP * 100;
+                            var user1Followers = user1Info.counts.followed_by / combinedFollowers * 100;
+                            var user2Followers = user2Info.counts.followed_by / combinedFollowers * 100;
+                            var user1Posts = user1Info.counts.media / combinedPosts * 100;
+                            var user2Posts = user2Info.counts.media / combinedPosts * 100;
+
 
                             var chartConfig4 = {
                                 options: {
@@ -405,10 +415,10 @@ angular.module('postalyzerApp')
 
                                 series: [{
                                     name: user1Info.username,
-                                    data: [-user1TPP, -user1CPP, -user1LPP]
+                                    data: [-user1TPP, -user1CPP, -user1LPP, -user1Followers, -user1Posts]
                                 }, {
                                     name: user2Info.username,
-                                    data: [user2TPP, user2CPP, user2LPP]
+                                    data: [user2TPP, user2CPP, user2LPP, user2Followers, user2Posts]
                                 }]
                             };
 
