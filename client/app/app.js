@@ -11,7 +11,7 @@ angular.module('postalyzerApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
-      .otherwise('/login');
+      .otherwise('user/self');
 
     $locationProvider.html5Mode(true);
   })
