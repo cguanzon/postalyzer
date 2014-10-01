@@ -39,7 +39,6 @@ angular.module('postalyzerApp')
             $scope.hasCompared = true;
             $scope.promise = igService.compareUsers($scope.users[0].id, $scope.users[1].id)
                 .then(function(res){
-                    console.log(res);
                     $scope.compareChart = res.chartConfig4;
                 });
 

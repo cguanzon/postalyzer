@@ -28,7 +28,6 @@ angular.module('postalyzerApp')
                 }
             })
                 .success(function(data, status){
-                    console.log(data);
                     deferred.resolve(data);
                 })
                 .error(function(){
@@ -318,17 +317,13 @@ angular.module('postalyzerApp')
 
             getUser(userId1).then(function(res){
                 user1Info = res;
-                console.log(user1Info);
                 getUser(userId2).then(function(res){
                     user2Info = res;
                     getUserRecent(userId1).then(function(res){
                         user1Stats = res.resultWithStats;
-                        console.log(user1Stats);
 
                         getUserRecent(userId2).then(function(res){
                             user2Stats = res.resultWithStats;
-                            console.log(user2Stats);
-
                             //compute chart4 values
                             var statsContext1 = user1Stats.selfMediaRecent.stats;
                             var statsContext2 = user2Stats.selfMediaRecent.stats;
