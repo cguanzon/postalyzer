@@ -35,9 +35,9 @@
     font-size: 5em;
 }
 
-img {
-    margin: 0.5em 0;
-    box-shadow: 0.08em 0.08em 0.1em 0.1em #ccc;
+img.img-circle {
+    margin: 1em auto;
+    box-shadow: 0 0 0 0.5em #9954BB;
     transition: transform 0.2s;
 }
 
