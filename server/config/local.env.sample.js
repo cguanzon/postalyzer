@@ -6,9 +6,7 @@
 // You will need to set these on the server you deploy to.
 
 module.exports = {
-  DOMAIN:           'http://localhost:9000',
-  SESSION_SECRET:   'postalyzer-secret',
-
-  // Control debug level for modules using visionmedia/debug
-  DEBUG: ''
+    CLIENT_ID: 'put your instagram client id here',
+    CLIENT_SECRET: 'put your instagram client secret here',
+    domain: 'put your development domain here - (example http://localhost:9000)'
 };
