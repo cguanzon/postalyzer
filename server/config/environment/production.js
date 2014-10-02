@@ -19,13 +19,5 @@ module.exports = {
             process.env.MONGOHQ_URL ||
             process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
             'mongodb://localhost/postalyzer'
-  },
-
-    heroku: {
-        CLIENT_ID: '4c0fd1464b38494abdfb7ab7f0176266',
-        CLIENT_SECRET: '4aee2f945751493f9187d2bc7e1fca53'
-    },
-
-    domain: 'http://postalyzer.herokuapp.com'
-
+  }
 };
