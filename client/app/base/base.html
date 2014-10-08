@@ -1,12 +1,14 @@
-<div class="top">
-    <p class="text-right" ><a ng-click="logout()">Logout</a></p>
-    <h1 class="text-center"><span class="text-primary app-title">post<span class="text-danger">a</span>lyzer</span></h1>
-    <ul class="nav nav-tabs" role="tablist">
-        <li ng-class="{active:isActive('/user/self')}"><a ng-click="goToDashboard()">Me</a></li>
-        <li ng-class="{active:isActive('/feed')}"><a ng-click="goToFeed()">Feed</a></li>
-        <li ng-class="{active:isActive('/search')}"><a ng-click="goToSearch()">Search</a></li>
-        <li ng-class="{active:isActive('/compare')}"><a ng-click="goToCompare()">Compare</a></li>
-    </ul>
-</div>
+<nav class="top navbar navbar-fixed-top popme">
+   <div class="container-fluid">
+       <p class="text-right" ><a ng-click="logout()">Logout</a></p>
+        <h1 class="text-center"><span class="text-primary app-title">post<span class="text-danger">a</span>lyzer</span></h1>
+        <ul class="nav nav-pills">
+            <li ng-class="{active:isActive('/user/self')}"><a ng-click="goToDashboard()">Me</a></li>
+            <li ng-class="{active:isActive('/feed')}"><a ng-click="goToFeed()">Feed</a></li>
+            <li ng-class="{active:isActive('/search')}"><a ng-click="goToSearch()">Search</a></li>
+            <li ng-class="{active:isActive('/compare')}"><a ng-click="goToCompare()">Compare</a></li>
+        </ul>
+    </div>
+</nav>
 
 <div ui-view></div>
