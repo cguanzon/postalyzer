@@ -8,18 +8,92 @@
         </div>
 
         <div class="col-xs-12 text-left">
-            <ul class="list-group basic-stats">
-                <li class="list-group-item"><span class="text-info">Full Name:</span> {{selfUser.full_name}}</li>
-                <li class="list-group-item"><span class="text-info">Bio:</span> {{selfUser.bio}}</li>
-                <li class="list-group-item"><span class="text-info">Posts:</span> <span class="badge alert-info"><b>{{selfUser.counts.media | number:0}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">Followers:</span> <span class="badge alert-info"><b>{{selfUser.counts.followed_by | number:0}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">Following:</span> <span class="badge alert-info"><b>{{selfUser.counts.follows | number:0}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.likeScorePerMedia.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.likeScorePerMedia.value || 0 | number:1}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.commentScorePerMedia.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.commentScorePerMedia.value || 0 | number:1}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">{{selfMediaRecent.stats.tagsPerPost.name}}:</span> <span class="badge alert-info"><b>{{selfMediaRecent.stats.tagsPerPost.value || 0 | number:1}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">Favorite Filter:</span> <span class="badge alert-info"><b>{{timesUsedPerFilterChartData[0].name || 'none'}}</b></span></li>
-                <li class="list-group-item"><span class="text-info">Favorite Tag:</span> <span class="badge alert-info"><b>{{tagsUsedPerTagChartData[0].name || 'none'}}</b></span></li>
-            </ul>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Posts</h3>
+                </div>
+                <div class="panel-body">
+                    <b>{{selfUser.counts.media | number:0}}</b>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Followers
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <b>{{selfUser.counts.followed_by | number:0}}</b>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Following
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <b>{{selfUser.counts.follows | number:0}}</b>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {{selfMediaRecent.stats.likeScorePerMedia.name}}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <b>{{selfMediaRecent.stats.likeScorePerMedia.value || 0 | number:1}}</b>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {{selfMediaRecent.stats.commentScorePerMedia.name}}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <b>{{selfMediaRecent.stats.commentScorePerMedia.value || 0 | number:1}}</b>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {{selfMediaRecent.stats.tagsPerPost.name}}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <b>{{selfMediaRecent.stats.tagsPerPost.value || 0 | number:1}}</b>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Favorite Filter
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <b>{{timesUsedPerFilterChartData[0].name || 'none'}}</b>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Favorite Tag
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <b>{{tagsUsedPerTagChartData[0].name || 'none'}}</b>
+                </div>
+            </div>
+
         </div>
     </div>
 
