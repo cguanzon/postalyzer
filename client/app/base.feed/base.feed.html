@@ -5,12 +5,11 @@
             <div class="panel-body">
 
                 <a ng-href="/#/user/{{feedItem.user.id}}"><div class="panel-body feed-author-info" tooltip="{{tooltips.user}}">
-                    <div class="col-xs-4 feed-author">
+                    <div class="col-xs-12 feed-author">
                         <img class="user-image img-circle center-block" ng-src="{{feedItem.user.profile_picture}}"/>
                     </div>
-                    <div class="col-xs-8 pull-left">
-                        <p class="text-info"><b>{{feedItem.user.username}}</b></p>
-                        <p class="text-info"><b>{{feedItem.user.full_name}}</b></p>
+                    <div class="col-xs-12">
+                        <p class="text-info text-center"><b>{{feedItem.user.username}}</b></p>
                     </div>
                 </div></a>
 

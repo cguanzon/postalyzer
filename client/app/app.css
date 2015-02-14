@@ -27,6 +27,10 @@
     font-style: normal;
 }
 
+h1 {
+    font-size: 3em;
+}
+
 .sub-body {
     padding-top: 5em;
 }
@@ -75,7 +79,7 @@ img.user-image.img-responsive {
 }
 
 .user-info {
-    background-color: lightgreen;
+    background-color: #ffffff;
     margin: 0 auto 1em auto;
     padding: 0.5em 0;
     box-shadow: 0 0 1em gray;
