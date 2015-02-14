@@ -1,14 +1,41 @@
-<nav class="top navbar navbar-fixed-top popme">
+<div class="top navbar navbar-default navbar-fixed-top">
    <div class="container-fluid">
-       <p class="text-right" ><a ng-click="logout()">Logout</a></p>
-        <h1 class="text-center"><span class="text-primary app-title">post<span class="text-danger">a</span>lyzer</span></h1>
-        <ul class="nav nav-pills">
-            <li ng-class="{active:isActive('/user/self')}"><a ng-click="goToDashboard()">Me</a></li>
-            <li ng-class="{active:isActive('/feed')}"><a ng-click="goToFeed()">Feed</a></li>
-            <li ng-class="{active:isActive('/search')}"><a ng-click="goToSearch()">Search</a></li>
-            <li ng-class="{active:isActive('/compare')}"><a ng-click="goToCompare()">Compare</a></li>
-        </ul>
-    </div>
-</nav>
 
-<div ui-view></div>
+       <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed"
+                   data-toggle="collapse" data-target="#hamburger">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#">
+               <p class="text-center">
+                   <span class="text-primary app-title">
+                       post<span class="text-danger">a</span>lyzer
+                   </span>
+               </p>
+           </a>
+       </div>
+
+       <div class="collapse navbar-collapse" id="hamburger">
+           <ul class="nav navbar-nav">
+                <li ng-class="{active:isActive('/user/self')}"><a ng-click="goToDashboard()">Me</a></li>
+                <li ng-class="{active:isActive('/feed')}"><a ng-click="goToFeed()">Feed</a></li>
+                <li ng-class="{active:isActive('/search')}"><a ng-click="goToSearch()">Search</a></li>
+                <li ng-class="{active:isActive('/compare')}"><a ng-click="goToCompare()">Compare</a></li>
+                <li><a ng-click="logout()">Logout</a></li>
+            </ul>
+       </div>
+    </div>
+</div>
+
+<div class="sub-body">
+    <div ui-view></div>
+</div>
+
+<script>
+    $('.nav.navbar-nav a').on('click', function(){
+        $(".navbar-toggle").click();
+    });
+</script>
