@@ -27,14 +27,6 @@
     font-style: normal;
 }
 
-/**
- * App-wide Styles
- */
-
-body {
-    padding-top: 10em;
-}
-
 .top {
     padding-bottom: 0.4em;
     border-bottom: 0.1em solid #d3d3d3;
