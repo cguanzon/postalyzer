@@ -7,7 +7,7 @@ angular.module('postalyzerApp', [
   'ui.router',
   'ui.bootstrap',
   'cgBusy',
-  'highcharts-ng'
+  'chart.js'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider

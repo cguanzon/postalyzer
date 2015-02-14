@@ -8,66 +8,77 @@
         </div>
 
         <div class="col-xs-12">
-            <div class="panel">
-                <div class="panel-heading text-center">
-                    <button class="btn btn-default" ng-click="toggleBasic();">
-                        {{toggleText}}
-                    </button>
-                </div>
-                <table class="table table-condensed" ng-show="showBasic">
-                    <tr>
-                        <td>Posts</td>
-                        <td><b class="text-info">{{selfUser.counts.media | number:0}}</b></td>
-                    </tr>
-                    <tr>
-                        <td>Followers</td>
-                        <td><b class="text-info">{{selfUser.counts.followed_by | number:0}}</b></td>
-                    </tr>
-                    <tr>
-                        <td>Following</td>
-                        <td><b class="text-info">{{selfUser.counts.follows | number:0}}</b></td>
-                    </tr>
-                    <tr>
-                        <td>{{selfMediaRecent.stats.likeScorePerMedia.name}}</td>
-                        <td><b class="text-info">{{selfMediaRecent.stats.likeScorePerMedia.value || 0 | number:1}}</b></td>
-                    </tr>
-                    <tr>
-                        <td>{{selfMediaRecent.stats.commentScorePerMedia.name}}</td>
-                        <td><b class="text-info">{{selfMediaRecent.stats.commentScorePerMedia.value || 0 | number:1}}</b></td>
-                    </tr>
-                    <tr>
-                        <td>{{selfMediaRecent.stats.tagsPerPost.name}}</td>
-                        <td><b class="text-info">{{selfMediaRecent.stats.tagsPerPost.value || 0 | number:1}}</b></td>
-                    </tr>
-                    <tr>
-                        <td>Favorite Filter</td>
-                        <td><b class="text-info">{{timesUsedPerFilterChartData[0].name || 'none'}}</b></td>
-                    </tr>
-                    <tr>
-                        <td>Favorite Tag</td>
-                        <td><b class="text-info">{{tagsUsedPerTagChartData[0].name || 'none'}}</b></td>
-                    </tr>
-                </table>
-            </div>
+            <div class="text-center"><h5>
+                <a ng-click="toggleBasic();">
+                    {{toggleText}}
+                </a>
+            </h5></div>
+            <table class="table" ng-show="showBasic">
+                <tr>
+                    <td>Posts</td>
+                    <td><b class="text-info">{{selfUser.counts.media | number:0}}</b></td>
+                </tr>
+                <tr>
+                    <td>Followers</td>
+                    <td><b class="text-info">{{selfUser.counts.followed_by | number:0}}</b></td>
+                </tr>
+                <tr>
+                    <td>Following</td>
+                    <td><b class="text-info">{{selfUser.counts.follows | number:0}}</b></td>
+                </tr>
+                <tr>
+                    <td>{{selfMediaRecent.stats.likeScorePerMedia.name}}</td>
+                    <td><b class="text-info">{{selfMediaRecent.stats.likeScorePerMedia.value || 0 | number:1}}</b></td>
+                </tr>
+                <tr>
+                    <td>{{selfMediaRecent.stats.commentScorePerMedia.name}}</td>
+                    <td><b class="text-info">{{selfMediaRecent.stats.commentScorePerMedia.value || 0 | number:1}}</b></td>
+                </tr>
+                <tr>
+                    <td>{{selfMediaRecent.stats.tagsPerPost.name}}</td>
+                    <td><b class="text-info">{{selfMediaRecent.stats.tagsPerPost.value || 0 | number:1}}</b></td>
+                </tr>
+                <tr>
+                    <td>Favorite Filter</td>
+                    <td><b class="text-info">{{timesUsedPerFilterChartData[0].name || 'none'}}</b></td>
+                </tr>
+                <tr>
+                    <td>Favorite Tag</td>
+                    <td><b class="text-info">{{tagsUsedPerTagChartData[0].name || 'none'}}</b></td>
+                </tr>
+            </table>
         </div>
     </div>
 
     <div class="col-xs-12 col-md-9 pull-right">
-        <div class="panel panel-info popme">
+        <div class="panel panel-primary popme">
             <div class="panel-heading"><h2 class="text-center"><b>Filter Stats</b></h2></div>
-            <div class="panel-body stats-panel">
+            <div class="panel-body">
                 <div class="col-xs-12 col-lg-6">
-                    <highchart id="chart1" config="chartConfig1" ></highchart>
+                    <p class="text-center text-primary">Times Used</p>
+                    <canvas class="chart chart-pie" data="filterTimesUsedData"
+                            labels="filterTimesUsedLabels" legend="true" options="chartOptions"></canvas>
                 </div>
                 <div class="col-xs-12 col-lg-6">
-                    <highchart id="chart2" config="chartConfig2" ></highchart>
+                    <p class="text-center text-primary">Likes per Times Used</p>
+                    <canvas class="chart chart-pie" data="filterLikeData"
+                            labels="filterLikeLabels" legend="true" options="chartOptions"></canvas>
+                </div>
+                <div class="col-xs-12 col-lg-6">
+                    <p class="text-center text-primary">Comments per Times Used</p>
+                    <canvas class="chart chart-pie" data="filterCommentData"
+                            labels="filterCommentLabels" legend="true" options="chartOptions"></canvas>
                 </div>
             </div>
         </div>
-        <div class="panel panel-info popme">
+        <div class="panel panel-primary popme">
             <div class="panel-heading"><h2 class="text-center"><b>Tag Stats</b></h2></div>
             <div class="panel-body stats-panel">
-                    <highchart id="chart3" config="chartConfig3" ></highchart>
+                <div class="col-xs-12>
+                    <p class="text-center text-primary">Times Used</p>
+                    <canvas class="chart chart-pie" data="tagTimesUsedData"
+                            labels="tagTimesUsedLabels" legend="true" options="chartOptions"></canvas>
+                </div>
             </div>
         </div>
     </div>

@@ -31,6 +31,14 @@ h1 {
     font-size: 3em;
 }
 
+h2 {
+    font-size: 2.67em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    overflow-wrap: break-word;
+}
+
 .sub-body {
     padding-top: 5em;
 }
@@ -113,10 +121,6 @@ img.user-image.img-responsive {
 .feed-author > img{
     height: 4em;
     width: 4em;
-}
-
-.stats-panel {
-    background-color: lightgray;
 }
 
 .popme {

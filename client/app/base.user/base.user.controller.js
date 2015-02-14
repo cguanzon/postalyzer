@@ -3,6 +3,12 @@
 angular.module('postalyzerApp')
   .controller('BaseUserCtrl', function ($scope, $stateParams, igService) {
 
+        //test
+        $scope.data = [300, 500, 100];
+        $scope.chartOptions = {
+          responsive: true
+        };
+
         $scope.tooltips = igService.getTooltips();
         $scope.showBasic = false;
         $scope.toggleText = 'Show basic stats';
@@ -24,6 +30,30 @@ angular.module('postalyzerApp')
                 for(var key in res.resultWithStats){
                     //see igService for the keys and values
                     $scope[key] = res.resultWithStats[key];
+                    $scope.filterLikeLabels = res.resultWithStats.likesPerFilterChartData.map(function(datum){
+                        return datum.name;
+                    });
+                    $scope.filterLikeData = res.resultWithStats.likesPerFilterChartData.map(function(datum){
+                        return datum.value;
+                    });
+                    $scope.filterCommentLabels = res.resultWithStats.commentsPerFilterChartData.map(function(datum){
+                        return datum.name;
+                    });
+                    $scope.filterCommentData = res.resultWithStats.commentsPerFilterChartData.map(function(datum){
+                        return datum.value;
+                    });
+                    $scope.filterTimesUsedLabels = res.resultWithStats.timesUsedPerFilterChartData.map(function(datum){
+                        return datum.name;
+                    });
+                    $scope.filterTimesUsedData = res.resultWithStats.timesUsedPerFilterChartData.map(function(datum){
+                        return datum.value;
+                    });
+                    $scope.tagTimesUsedLabels = res.resultWithStats.timesUsedPerTagChartData.map(function(datum){
+                        return datum.name;
+                    }).slice(0,5);
+                    $scope.tagTimesUsedData = res.resultWithStats.timesUsedPerTagChartData.map(function(datum){
+                        return datum.value;
+                    }).slice(0,5);
                 }
             });
         };

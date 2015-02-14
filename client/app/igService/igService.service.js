@@ -93,19 +93,19 @@ angular.module('postalyzerApp')
                         resultWithStats.likesPerFilterChartData = [];
                         resultWithStats.commentsPerFilterChartData = [];
                         resultWithStats.timesUsedPerFilterChartData = [];
-                        resultWithStats.tagsUsedPerTagChartData = [];
+                        resultWithStats.timesUsedPerTagChartData = [];
 
                         for (var key in resultWithStats.selfMediaRecent.stats.tagStats) {
                             if (resultWithStats.selfMediaRecent.stats.tagStats.hasOwnProperty(key)) {
-                                resultWithStats.tagsUsedPerTagChartData.push(
+                                resultWithStats.timesUsedPerTagChartData.push(
                                     {
                                         name: key,
-                                        y: resultWithStats.selfMediaRecent.stats.tagStats[key].timesUsed
+                                        value: resultWithStats.selfMediaRecent.stats.tagStats[key].timesUsed
                                     }
                                 );
                             }
                         }
-                        sortByKey(resultWithStats.tagsUsedPerTagChartData, 'y');
+                        sortByKey(resultWithStats.timesUsedPerTagChartData, 'y');
 
                         //build filterStats chart data
                         for (var key in resultWithStats.selfMediaRecent.stats.filterStats) {
@@ -113,28 +113,20 @@ angular.module('postalyzerApp')
                                 resultWithStats.likesPerFilterChartData.push(
                                     {
                                         name: key,
-                                        y: Math.round(resultWithStats.selfMediaRecent.stats.filterStats[key].likeScorePerTimesUsed * 10) / 10,
-                                        dataLabels: {
-                                            enabled: true
-                                        }
+                                        value: Math.round(resultWithStats.selfMediaRecent.stats.filterStats[key].likeScorePerTimesUsed * 10) / 10
                                     }
                                 );
+
                                 resultWithStats.commentsPerFilterChartData.push(
                                     {
                                         name: key,
-                                        y: Math.round(resultWithStats.selfMediaRecent.stats.filterStats[key].commentScorePerTimesUsed * 10) / 10,
-                                        dataLabels: {
-                                            enabled: true
-                                        }
+                                        value: Math.round(resultWithStats.selfMediaRecent.stats.filterStats[key].commentScorePerTimesUsed * 10) / 10
                                     }
                                 );
                                 resultWithStats.timesUsedPerFilterChartData.push(
                                     {
                                         name: key,
-                                        y: resultWithStats.selfMediaRecent.stats.filterStats[key].timesUsed,
-                                        dataLabels: {
-                                            enabled: true
-                                        }
+                                        value: resultWithStats.selfMediaRecent.stats.filterStats[key].timesUsed
                                     }
                                 );
 
@@ -143,156 +135,6 @@ angular.module('postalyzerApp')
                         sortByKey(resultWithStats.likesPerFilterChartData, 'y');
                         sortByKey(resultWithStats.commentsPerFilterChartData, 'y');
                         sortByKey(resultWithStats.timesUsedPerFilterChartData, 'y');
-
-                        resultWithStats.chartConfig1 = {
-
-                            options: {
-                                chart: {
-                                    backgroundColor: 'lightgray',
-                                    type: 'column',
-                                    animation: {
-                                        duration: 2000
-                                    }
-                                },
-                                colors: [
-                                    '#00C924',
-                                    '#C900A5'
-                                ],
-                                title: {
-                                    text: '<b>Like/Comments per Use (Top 5)</b>'
-                                },
-                                tooltip: {
-                                    pointFormat: '{series.name}: <b>{point.y:.2f}</b>'
-                                },
-                                xAxis: {
-                                    title: {
-                                        text: 'Filter',
-                                        style: chartTextStyle
-                                    },
-                                    type: 'category',
-                                    labels: {
-                                        rotation: -45,
-                                        style: chartTextStyle
-                                    }
-                                },
-
-                                yAxis: {
-                                    min: 0,
-                                    title: {
-                                        text: 'Likes/Comments per Use',
-                                        style: chartTextStyle
-                                    }
-                                }
-                            },
-
-                            series: [{
-                                name: 'Likes per Use',
-                                data: resultWithStats.likesPerFilterChartData.slice(0,5)
-                            },{
-                                name: 'Comments per Use',
-                                data: resultWithStats.commentsPerFilterChartData.slice(0,5)
-                            }]
-                        };
-
-                        resultWithStats.chartConfig2 = {
-
-                            options: {
-                                chart: {
-                                    backgroundColor: 'lightgray',
-                                    type: 'pie',
-                                    plotBackgroundColor: null,
-                                    plotBorderWidth: 0,
-                                    plotShadow: true,
-                                    animation: {
-                                        duration: 900
-                                    }
-                                },
-                                colors: [
-                                    '#00C924',
-                                    '#ED114F',
-                                    '#FADF11',
-                                    '#FA6B11',
-                                    '#11FAF6',
-                                    '#1167FA'
-                                ],
-                                title: {
-                                    text: '<b>Times Used (Top 5)</b>'
-                                },
-                                tooltip: {
-                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                                },
-                                plotOptions: {
-                                    pie: {
-                                        dataLabels: {
-                                            enabled: true,
-                                            distance: -50,
-                                            style: {
-                                                fontWeight: 'bold',
-                                                color: 'white',
-                                                textShadow: '0px 1px 2px black'
-                                            }
-                                        },
-                                        startAngle: -90,
-                                        endAngle: 90,
-                                        center: ['50%', '75%']
-                                    }
-                                }
-
-                            },
-
-                            series: [{
-                                type: 'pie',
-                                name: 'Times Used',
-                                innerSize: '30%',
-                                data: resultWithStats.timesUsedPerFilterChartData.slice(0,5)
-                            }]
-                        };
-
-                        resultWithStats.chartConfig3 = {
-                            options: {
-                                chart: {
-                                    backgroundColor: 'lightgray',
-                                    type: 'bar',
-                                    animation: {
-                                        duration: 2000
-                                    }
-                                },
-                                title: {
-                                    text: '<b>Times Used for Top Tags</b>'
-                                },
-                                xAxis: {
-                                    title: {
-                                        text: 'Tag',
-                                        style: chartTextStyle
-                                    },
-                                    type: 'category',
-                                    labels: {
-                                        style: chartTextStyle
-                                    }
-                                },
-                                yAxis: {
-                                    min: 0,
-                                    title: {
-                                        text: 'Times Used',
-                                        style: chartTextStyle
-                                    }
-                                },
-                                tooltip: {
-                                    pointFormat: '{series.name}: <b>{point.y}</b>'
-                                },
-                                plotOptions: {
-                                    bar: {
-                                        dataLabels: {
-                                            enabled: true
-                                        }
-                                    }
-                                }
-                            },
-                            series: [{
-                                name: 'Times Used',
-                                data: resultWithStats.tagsUsedPerTagChartData.slice(0,5)
-                            }]
-                        };
                     }
                     deferred.resolve({resultWithStats: resultWithStats});
 
@@ -343,81 +185,60 @@ angular.module('postalyzerApp')
                             var user1Posts = user1Info.counts.media / combinedPosts * 100;
                             var user2Posts = user2Info.counts.media / combinedPosts * 100;
 
-
-                            var chartConfig4 = {
-                                options: {
-                                    chart: {
-                                        type: 'bar',
-                                        backgroundColor: 'lightgray',
-                                        animation: {
-                                            duration: 2000
-                                        }
+                            var stats = {
+                                TPP: [
+                                    {
+                                        name: user1Info.username,
+                                        value: Math.round(user1TPP)
                                     },
-                                    colors: [
-                                        '#00C924',
-                                        '#ED114F'
-
-                                    ],
-                                    title: {
-                                        text: 'Share Percentages',
-                                        style: chartTextStyle
-
-                                    },
-                                    xAxis: [{
-                                        categories: categories,
-                                        reversed: false,
-                                        labels: {
-                                            step: 1,
-                                            style: chartTextStyle
-                                        }
-                                    }, { // mirror axis on right side
-                                        opposite: true,
-                                        reversed: false,
-                                        categories: categories,
-                                        linkedTo: 0,
-                                        labels: {
-                                            step: 1,
-                                            style: chartTextStyle
-                                        }
-                                    }],
-                                    yAxis: {
-                                        title: {
-                                            text: null
-                                        },
-                                        labels: {
-                                            formatter: function () {
-                                                return '<b>' + (Math.abs(this.value)) + '%</b>';
-                                            }
-                                        },
-                                        min: -100,
-                                        max: 100
-                                    },
-
-                                    plotOptions: {
-                                        series: {
-                                            stacking: 'normal'
-                                        }
-                                    },
-
-                                    tooltip: {
-                                        formatter: function () {
-                                            return '<b>' + this.series.name + ', <br/>' + this.point.category +
-                                                ': ' + Highcharts.numberFormat(Math.abs(this.point.y), 0) + '%</b>';
-                                        }
+                                    {
+                                        name: user2Info.username,
+                                        value: Math.round(user2TPP)
                                     }
-                                },
+                                ],
+                                LPP: [
+                                    {
+                                        name: user1Info.username,
+                                        value: Math.round(user1LPP)
+                                    },
+                                    {
+                                        name: user2Info.username,
+                                        value: Math.round(user2LPP)
+                                    }
+                                ],
+                                CPP: [
+                                    {
+                                        name: user1Info.username,
+                                        value: Math.round(user1CPP)
+                                    },
+                                    {
+                                        name: user2Info.username,
+                                        value: Math.round(user2CPP)
+                                    }
+                                ],
+                                followers: [
+                                    {
+                                        name: user1Info.username,
+                                        value: Math.round(user1Followers)
+                                    },
+                                    {
+                                        name: user2Info.username,
+                                        value: Math.round(user2Followers)
+                                    }
+                                ],
+                                posts: [
+                                    {
+                                        name: user1Info.username,
+                                        value: Math.round(user1Posts)
+                                    },
+                                    {
+                                        name: user2Info.username,
+                                        value: Math.round(user2Posts)
+                                    }
+                                ]
+                            }
 
-
-                                series: [{
-                                    name: user1Info.username,
-                                    data: [-user1TPP, -user1CPP, -user1LPP, -user1Followers, -user1Posts]
-                                }, {
-                                    name: user2Info.username,
-                                    data: [user2TPP, user2CPP, user2LPP, user2Followers, user2Posts]
-                                }]
-                            };
-
-                            deferred.resolve({chartConfig4: chartConfig4});
+                            deferred.resolve({stats: stats});
                         });
                     });
                 });
