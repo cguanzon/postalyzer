@@ -3,18 +3,14 @@
 angular.module('postalyzerApp')
   .controller('BaseSearchCtrl', function ($state, $scope, igService) {
         $scope.searchTerm = '';
-        $scope.hasSearched = function(){
-            if ($scope.searchTerm.length > 0) {
-                return true;
-            }
-            return false;
-        };
+        $scope.hasSearched = false;
 
         $scope.searchForUser = function(){
             igService.searchForUser($scope.searchTerm)
                 .then( function (res) {
                     $scope.searchResults = res.data;
                 });
+            $scope.hasSearched = true;
         };
 
         $scope.goToUser = function(userId) {

@@ -9,9 +9,9 @@
 
         <div class="col-xs-12">
             <div class="text-center"><h5>
-                <a ng-click="toggleBasic();">
+                <button class="btn btn-default" ng-click="toggleBasic();">
                     {{toggleText}}
-                </a>
+                </button>
             </h5></div>
             <table class="table" ng-show="showBasic">
                 <tr>
@@ -84,15 +84,16 @@
     </div>
 
     <div class="col-xs-12 col-md-9 pull-right user-feed">
-        <div class="panel panel-info popme">
+        <div class="panel panel-default popme">
             <div class="panel-heading"><h2 class="text-center"><b>Last {{selfMediaRecentArray.length}} Posts</b></h2></div>
             <div class="panel-body">
                 <div class="feed-item col-xs-12 col-sm-6" ng-repeat="medium in selfMediaRecentArray">
                     <div class="col-xs-12">
-                        <a tooltip="{{tooltips.instagram}}" tooltip-placement="right" ng-href="{{medium.link}}"><img class="img-thumbnail" ng-src="{{medium.images.low_resolution.url}}"></a>
+                        <a tooltip="{{tooltips.instagram}}" tooltip-placement="right" ng-href="{{medium.link}}"><img class="img-thumbnail" ng-src="{{medium.images.standard_resolution.url}}"></a>
                     </div>
 
                     <div class="col-xs-12 feed-stats">
+                        <p class="text-primary">{{medium.caption.text}}</p>
                         <p class="text-primary">Filter: <span class="text-danger">{{medium.filter}}</span></p>
                         <p class="text-primary">Time: <span class="text-danger">{{medium.caption.created_time*1000||'unknown' | date : 'EEE d-MM-yy'}}</span>
                         <p class="text-primary">Likes: <span class="text-danger">{{medium.likeScore}}</span></p>

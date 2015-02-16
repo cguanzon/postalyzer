@@ -1,32 +1,37 @@
-<div class="container-fluid" cg-busy="promise">
-    <div class="col-xs-12">
+<div cg-busy="promise">
         <h1 class="text-center text-info"><b>Feed</b></h1>
-        <div class="panel panel-default col-xs-12 col-sm-6 col-lg-4" ng-repeat="feedItem in selfFeed">
-            <div class="panel-body">
-
-                <a ng-href="/#/user/{{feedItem.user.id}}"><div class="panel-body feed-author-info" tooltip="{{tooltips.user}}">
-                    <div class="col-xs-12 feed-author">
-                        <img class="user-image img-circle center-block" ng-src="{{feedItem.user.profile_picture}}"/>
+        <div class="feed-item col-xs-12 col-md-6 col-lg-4" ng-repeat="feedItem in selfFeed">
+            <div class="feed-header row">
+                <a ng-href="/#/user/{{feedItem.user.id}}">
+                    <div class="panel-body feed-author-info
+                      col-xs-6 col-sm-4 col-lg-6" tooltip="{{tooltips.user}}">
+                        <div class="row feed-author">
+                            <img class="user-image img-circle center-block" ng-src="{{feedItem.user.profile_picture}}"/>
+                        </div>
+                        <div class="row">
+                            <p class="text-info text-center"><b>{{feedItem.user.username}}</b></p>
+                        </div>
                     </div>
-                    <div class="col-xs-12">
-                        <p class="text-info text-center"><b>{{feedItem.user.username}}</b></p>
-                    </div>
-                </div></a>
+                </a>
 
-                <div class="col-xs-12">
-                    <a tooltip="{{tooltips.instagram}}" target="_blank" ng-href="{{feedItem.link}}"><img class="img-responsive center-block" ng-src="{{feedItem.images.low_resolution.url}}"></a>
-                </div>
-
-                <div class="col-xs-12 feed-stats">
+                <div class="col-xs-6 col-sm-8 col-lg-6 feed-stats">
                     <p class="text-primary"><b>Filter: <span class="text-danger">{{feedItem.filter}}</span></b></p>
-                    <p class="text-primary"><b>Time: <span class="text-danger">{{feedItem.caption.created_time*1000 || 'unknown' | date : 'medium'}}</span></b></p>
+                    <p class="text-primary"><b>Time: <span class="text-danger">{{feedItem.caption.created_time*1000 || 'unknown' | date : 'short'}}</span></b></p>
                     <p class="text-primary"><b>Likes: <span class="text-danger">{{feedItem.likeScore}}</span></b></p>
                     <p class="text-primary"><b>Comments: <span class="text-danger">{{feedItem.commentScore}}</span></b></p>
                 </div>
             </div>
+
+
+            <div class="row">
+                <a tooltip="{{tooltips.instagram}}" target="_blank" ng-href="{{feedItem.link}}">
+                    <img class="feed-image center-block" ng-src="{{feedItem.images.standard_resolution.url}}">
+                </a>
+            </div>
+
+
         </div>
-    </div>
-    <div class="col-xs-12 load-more">
+    <div class="row load-more">
         <a ng-click="getNextFeed()">
             <button class="btn btn-default btn-block">
                 Load More

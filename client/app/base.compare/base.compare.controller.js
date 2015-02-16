@@ -6,12 +6,6 @@ angular.module('postalyzerApp')
         $scope.users = [{},{}];
         $scope.searchResults = [{},{}];
 
-        $scope.hasSearched = function(){
-            if ($scope.searchTerms[0].length > 0 || $scope.searchTerms[1].length > 0) {
-                return true;
-            }
-            return false;
-        };
         $scope.hasSelected = function(userNumber){
             if($scope.users[userNumber-1].username) {
                 return true;

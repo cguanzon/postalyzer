@@ -78,12 +78,8 @@ img.user-image.img-responsive {
 }
 
 .feed-item {
-    border-bottom: 0.1em solid lightgray;
+    border: 0.1em solid lightgrey;
     padding: 1em;
-}
-
-.feed-stats {
-    padding-top: 1em;
 }
 
 .user-info {
@@ -105,6 +101,7 @@ img.user-image.img-responsive {
     text-shadow: darkgrey -0.03em 0.05em;
     font-weight: bolder;
 }
+
 .feed-author-info, .user-info, .self-info {
     margin-bottom: 1em;
     transition: transform 0.2s;
@@ -121,6 +118,17 @@ img.user-image.img-responsive {
 .feed-author > img{
     height: 4em;
     width: 4em;
+}
+.feed-stats {
+    padding-top: 2em;
+}
+
+.feed-stats > p {
+    line-height: 1em;
+}
+
+.feed-image {
+    width: 90%;
 }
 
 .popme {

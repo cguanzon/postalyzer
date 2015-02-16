@@ -14,6 +14,9 @@ angular.module('postalyzerApp', [
       .otherwise('login');
 
     $locationProvider.html5Mode(true);
+
+    //totally randomizes chart colors
+    Chart.defaults.global.colours = [];
   })
 
 //  need to find a way to make this work with grunt serve:dist
